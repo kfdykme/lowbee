@@ -1,0 +1,3 @@
+[submodule "quickapp-base"]
+	path = quickapp-base
+	url = https://github.com/kfdykme/quickapp-base/

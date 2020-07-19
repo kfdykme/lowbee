@@ -1,0 +1,4 @@
+{
+  "basePath": "./quickapp-base",
+  "targetBasePath" : "./src"
+}
