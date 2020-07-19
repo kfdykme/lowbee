@@ -1,10 +1,19 @@
 <template>
+  <!-- template里只能有一个根节点 -->
   <div class="containor-page">
     <text class="title">欢迎</text>
   </div>
 </template>
 
-<style lang="less" src="./((pageName)).less"></style>
+<style lang="less" src="./containor.less">
+  .containor-pace {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+  }
+  @import '../../../css/common.less'
+</style>
 
 <script>
 import router from '@system.router'
