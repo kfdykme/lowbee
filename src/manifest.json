@@ -14,7 +14,8 @@
         },
         {
             "name": "system.shortcut"
-        }
+        },
+        { "name": "system.webview" }
     ],
     "permissions": [
         {
@@ -35,6 +36,8 @@
     "display": {
         "titleBarBackgroundColor": "#f2f2f2",
         "titleBarTextColor": "#414141",
+        "fullScreen": true,
+        "titleBar": false,
         "menu": false,
         "pages": {
             "View/Pages/Containor": {

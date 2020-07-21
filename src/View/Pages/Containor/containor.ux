@@ -1,32 +1,49 @@
+<import name="my-input" src="apex-ui/components/input/index"></import>
+
 <template>
   <!-- template里只能有一个根节点 -->
-  <div class="containor-page">
-    <text class="title">欢迎</text>
+  <div class="containor-page page-containor">
+    <web id="web" src="{{currentUrl}}" showloadingdialog="true" supportzoom="true" allowthirdpartycookies="true"></web>
+    <div class="row">
+
+      <my-input value="{{ weburl }}" type="text" right="true" mode="wrapped" @enterkeyclick="onChangeUrlInput"></my-input>
+
+    </div>
+
   </div>
 </template>
 
 <style lang="less" src="./containor.less">
-  .containor-pace {
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
 
-  }
-  @import '../../../css/common.less'
 </style>
 
 <script>
-import router from '@system.router'
+  import router from '@system.router'
 
-export default {
-  // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
-  private: {
-  },
-  public: {
-
-  },
-  firstMethod () {
-
+  export default {
+    // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
+    private: {},
+    public: {
+      weburl: 'http://www.baidu.com',
+      currentUrl:"http://www.example.com/"
+    },
+    onChangeUrlInput(e) {
+      let val = e.detail.value
+      this.currentUrl = val
+    },
+    onBackPress() {
+      this.$element('web').canBack({
+        callback: function(e) {
+          if (e) {
+            // 加载历史列表中的上一个 URL
+            this.$element('web').back()
+          } else {
+            router.back()
+          }
+        }.bind(this)
+      })
+      // 阻止默认行为，等待异步操作
+      return true
+    }
   }
-}
 </script>
